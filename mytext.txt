@@ -1,0 +1,21 @@
+done:
+pip install virtualenv
+env\Scripts\activate
+pip install Django
+python
+import django
+django.__version__
+^Z
+Need to Done on every project on this folder:
+django-admin startproject project-name
+cd project-name
+code .
+python manage.py stratapp user
+python manage.py runserver
+python manage.py runserver 0.0.0.0:5000
+
+for vscode tarminal:
+cd ..
+env\Scripts\activate
+cd project-name
+
