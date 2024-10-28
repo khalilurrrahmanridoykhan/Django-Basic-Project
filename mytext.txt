@@ -21,3 +21,5 @@ cd ..
 env\Scripts\activate
 cd project-name
 
+python manage.py makemigrations
+python manage.py migrate
