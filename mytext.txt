@@ -23,3 +23,7 @@ cd project-name
 
 python manage.py makemigrations
 python manage.py migrate
+
+python manage.py shell
+person = Person(name="Ridoy", age="21", address="BD")
+person.save()

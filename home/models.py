@@ -6,7 +6,7 @@ class Person(models.Model):
     age = models.IntegerField()
     addres = models.TextField(null=True)
     # image = models.ImageField()
-    file = models.FileField()
+    # file = models.FileField()
 
 class Contact(models.Model):
     name = models.CharField(max_length=100)
