@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import *
 
 def home(request):
     peopol =[
@@ -16,9 +17,36 @@ def about(request):
     page = "About Page"
     return render(request, 'about.html', context={'page': page})
 
+# views.py
+
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import Contact
+
 def contact(request):
+    # sourcery skip: inline-variable, last-if-guard, move-assign-in-block
     page = "Contact Page"
-    return render(request, 'contact.html',context={'page': page})
+    if request.method == 'POST':
+        data = request.POST
+        name = data.get('name')
+        email = data.get('email')
+        subject = data.get('subject')
+        message = data.get('message')
+        print(name, email, subject, message)
+
+        Contact.objects.create(
+            name=name,
+            email=email,
+            subject=subject,
+            message=message
+        )
+
+        # Add a success message
+        messages.success(request, "Thank you! Your message has been sent.")
+        return redirect('contact')  # Redirect to clear the form and display the message
+
+    return render(request, 'contact.html', context={'page': page})
+
 
 def services(request):
     page = "Services Page"
